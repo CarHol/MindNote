@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MindNote.CellPage"
+             Title="Note Entry">
+    <ContentPage.Content>
+        <StackLayout Margin="20,35,20,20">
+            <ListView x:Name="NoteView"
+            ItemsSource="{Binding Notes}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Text}" LineBreakMode="WordWrap"/>
+                                <!--<Label Text="My TextCell Detail" LineBreakMode="WordWrap"/> -->
+                            </StackLayout>
+                        </ViewCell>
+                        <!--<TextCell Text="{Binding Text}" /> -->
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
