@@ -12,8 +12,10 @@
 
   <ItemGroup>
     <PackageReference Include="AsyncAwaitBestPractices" Version="4.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.DataAnnotations" Version="5.0.0-preview.6.20305.6" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="sqlite-net-pcl" Version="1.7.335" />
+    <PackageReference Include="SQLiteNetExtensions" Version="2.1.0" />
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
   </ItemGroup>
@@ -23,6 +25,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="NoteEntryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="TopicEntryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="NotesPage.xaml">
@@ -36,5 +41,11 @@
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="TopicEntryPage.xaml.cs">
+      <DependentUpon>TopicEntryPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

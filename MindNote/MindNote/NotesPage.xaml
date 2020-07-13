@@ -9,7 +9,7 @@
         <ToolbarItem Text="Test layout"
                      Clicked="OnLayoutTestSelected" />
         <ToolbarItem Text="Add Topic"
-                     Clicked="OnNoteAddedClicked" />
+                     Clicked="OnTopicAddedTapped" />
     </ContentPage.ToolbarItems>
     <ListView x:Name="listView"
               Margin="20"

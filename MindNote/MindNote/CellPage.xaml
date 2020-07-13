@@ -6,10 +6,15 @@
              mc:Ignorable="d"
              x:Class="MindNote.CellPage"
              Title="Note Entry">
-    <ContentPage.Content>
-        <StackLayout Margin="20,35,20,20">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Text="Add Note"
+                 Clicked="OnNoteAddTapped" />
+  </ContentPage.ToolbarItems>  
+  <ContentPage.Content>
+      <StackLayout Margin="20,35,20,20" >
             <ListView x:Name="NoteView"
-            ItemsSource="{Binding Notes}">
+           
+            ItemSelected="OnListViewItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

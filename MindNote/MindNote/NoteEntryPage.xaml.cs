@@ -14,38 +14,28 @@ namespace MindNote
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NoteEntryPage : ContentPage
     {
-        public NoteEntryPage()
+        private IMindNoteModel model;
+
+        public NoteEntryPage(IMindNoteModel model)
         {
             InitializeComponent();
+            this.model = model;
         }
 
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            var topic = (Topic)BindingContext;
+            var note = (Note)BindingContext;
 
-            topic.Date = DateTime.UtcNow;
-            await App.Database.SaveNoteAsync(topic);
+            note.Date = DateTime.UtcNow;
+            await model.SaveNoteAsync(note);
 
             await Navigation.PopAsync();
         }
 
         async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
-            var topic = (Topic)BindingContext;
-
-            string[] texts = new string[]{ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo",
-                "TEXT2",
-                "Text3",
-                "Text4" };
-            List<Note> notes = new List<Note>();
-            foreach (var text in texts)
-            {
-                notes.Add(new Note() { Text = text });
-            }
-            var textlist = new ObservableCollection<Note>(notes);
-            //topic.Notes = textlist;
-
-            await App.Database.DeleteNoteAsync(topic);
+            var note = (Note)BindingContext;
+            await model.DeleteNoteAsync(note);
             await Navigation.PopAsync();
         }
     }

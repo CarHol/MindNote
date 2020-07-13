@@ -5,6 +5,7 @@ using MindNote.Services;
 using SQLite;
 using System.IO;
 using MindNote.Data;
+using MindNote.Models;
 
 namespace MindNote
 {
@@ -12,6 +13,7 @@ namespace MindNote
     {
 
         static NotesDatabase database;
+        static IMindNoteModel model;
 
         public static NotesDatabase Database {
             get {
@@ -23,11 +25,21 @@ namespace MindNote
             }
         }
 
+        public static IMindNoteModel Model {
+            get {
+                if (database == null)
+                {
+                    model = new MindNoteModel(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Topics2.db3"));
+                }
+                return model;
+            }
+        }
+
         public App()
         {
             InitializeComponent();
             
-            MainPage = new NavigationPage(new NotesPage());
+            MainPage = new NavigationPage(new NotesPage(Model));
         }
 
         protected override void OnStart()

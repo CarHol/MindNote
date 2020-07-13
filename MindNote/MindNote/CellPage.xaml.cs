@@ -14,11 +14,13 @@ namespace MindNote
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CellPage : ContentPage
     {
-        ObservableCollection<Note> notes = new ObservableCollection<Note>();
-        public ObservableCollection<Note> Notes { get { return notes; } }
-        public CellPage()
+        //ObservableCollection<Note> notes = new ObservableCollection<Note>();
+        //public ObservableCollection<Note> Notes { get { return notes; } }
+        private IMindNoteModel model;
+        public CellPage(IMindNoteModel model)
         {
             InitializeComponent();
+            this.model = model;
             
         }
 
@@ -27,18 +29,52 @@ namespace MindNote
         {
             base.OnAppearing();
             var topic = (Topic)BindingContext;
-            //Title = topic.Title;
-            //notes = topic.Notes;
+            Title = topic.Title;
+            var notes = await model.GetNotesAsync(topic.ID);
             /*foreach (var note in notes)
             {
                 Console.WriteLine(note.Text);
             }
             */
 
-            //NoteView.ItemsSource = notes;
+            NoteView.ItemsSource = notes;
             NoteView.HasUnevenRows = true;
 
         }
+
+        protected async void OnNoteAddTapped(object sender, EventArgs e)
+        {
+            var topic = (Topic)BindingContext;
+            await Navigation.PushAsync(new NoteEntryPage(model)
+            {
+                BindingContext = new Note()
+                {
+                    TopicID = topic.ID
+                }
+            });
+        }
+
+        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+
+                var note = e.SelectedItem as Note;
+                try
+                {
+                    await Navigation.PushAsync(new NoteEntryPage(model)
+                    {
+                        BindingContext = note as Note
+                    }
+                    );
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.ToString());
+                }
+            }
+        }
+
     }
 
 
