@@ -57,7 +57,7 @@ namespace MindNote
 
         async void OnLayoutTestSelected(object sender, EventArgs e)
         {
-            
+            await Navigation.PushAsync(new NoteWebView());
         }
     }
 }
