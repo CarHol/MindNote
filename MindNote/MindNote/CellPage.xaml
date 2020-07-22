@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:MindNote;assembly=MindNote"
              mc:Ignorable="d"
              x:Class="MindNote.CellPage"
              Title="Note Entry">
@@ -17,12 +18,7 @@
             ItemSelected="OnListViewItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout>
-                                <Label Text="{Binding Text}" LineBreakMode="WordWrap"/> 
-                            </StackLayout>
-                        </ViewCell>
-                        <!--<TextCell Text="{Binding Text}" /> -->
+                      <local:NoteCell Text="{Binding Text}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
