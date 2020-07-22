@@ -42,7 +42,7 @@ namespace MindNote
                 var topic = e.SelectedItem as Topic;
                 try
                 {
-                    await Navigation.PushAsync(new CellPage(model)
+                    await Navigation.PushAsync(new NoteWebView(model)
                         {
                             BindingContext = topic as Topic
                         }
@@ -57,7 +57,11 @@ namespace MindNote
 
         async void OnLayoutTestSelected(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NoteWebView());
+            var testTopic = await model.GetTopicAsync(0);
+            await Navigation.PushAsync(new NoteWebView(model)
+            {
+                BindingContext = testTopic
+            });
         }
     }
 }

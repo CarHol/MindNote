@@ -19,8 +19,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout>
-                                <Label Text="{Binding Text}" LineBreakMode="WordWrap"/>
-                                <!--<Label Text="My TextCell Detail" LineBreakMode="WordWrap"/> -->
+                                <Label Text="{Binding Text}" LineBreakMode="WordWrap"/> 
                             </StackLayout>
                         </ViewCell>
                         <!--<TextCell Text="{Binding Text}" /> -->
