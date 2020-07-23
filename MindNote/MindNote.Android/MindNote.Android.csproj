@@ -99,18 +99,18 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MindNote\MindNote.csproj">
-      <Project>{10A5CC16-8549-4046-915F-A51B6B1D25DE}</Project>
-      <Name>MindNote</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\layout\AndroidNoteCell.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\CustomSelector.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MindNote\MindNote.csproj">
+      <Project>{10a5cc16-8549-4046-915f-a51b6b1d25de}</Project>
+      <Name>MindNote</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

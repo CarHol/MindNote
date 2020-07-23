@@ -3,10 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindNote.Android", "MindNote\MindNote.Android\MindNote.Android.csproj", "{020B9B26-4B0A-4ABB-A5FC-773E6C44D88A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindNote", "MindNote\MindNote\MindNote.csproj", "{10A5CC16-8549-4046-915F-A51B6B1D25DE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MindNote.Android", "MindNote\MindNote.Android\MindNote.Android.csproj", "{020B9B26-4B0A-4ABB-A5FC-773E6C44D88A}"
+EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
