@@ -13,12 +13,10 @@
   </ContentPage.ToolbarItems>  
   <ContentPage.Content>
       <StackLayout Margin="20,35,20,20" >
-            <ListView x:Name="NoteView"
-           
-            ItemSelected="OnListViewItemSelected">
+            <ListView x:Name="NoteView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                      <local:NoteCell Text="{Binding Text}"/>
+                      <local:NoteCell Text="{Binding HtmlText}" LongPressed="NoteCell_LongPressed"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

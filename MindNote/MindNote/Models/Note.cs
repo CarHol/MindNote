@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using SQLite;
 using SQLiteNetExtensions.Attributes;
+using Markdig;
+
 namespace MindNote.Models
 {
     [Table("note")]
@@ -13,6 +15,12 @@ namespace MindNote.Models
         [ForeignKey(typeof(Topic))]
         public int TopicID { get; set; } 
         public string Text { get; set; } = "";
+        public string HtmlText {
+            get {
+                var pipeline = new MarkdownPipelineBuilder().UseAdvancedExtensions().Build();
+                return Markdown.ToHtml(Text, pipeline);
+            }
+        }
         public DateTime Date { get; set; } = DateTime.Now;
     }
 }

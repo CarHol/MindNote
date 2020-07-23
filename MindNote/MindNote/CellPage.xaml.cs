@@ -75,6 +75,30 @@ namespace MindNote
             }
         }
 
+        async void NoteCell_LongPressed(object sender, EventArgs e)
+        {
+            if (sender != null)
+            {
+                
+                var noteCell = (sender) as NoteCell;
+                var note = noteCell.BindingContext as Note;
+                try
+                {
+                    await Navigation.PushAsync(new NoteEntryPage(model)
+                    {
+                        BindingContext = note
+                    }
+                    );
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.ToString());
+                }
+            }
+        }
+
+
+
     }
 
 
