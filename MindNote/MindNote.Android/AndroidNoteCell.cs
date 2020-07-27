@@ -21,15 +21,14 @@ namespace MindNote.Droid
         // Fields
         public NoteCell NoteCell { get; private set; }
         public Element Element => NoteCell;
-        Context context;
 
         // Elements
         public TextView ContentText { get; set; }
+
         // Constructor
         public AndroidNoteCell(Context context, NoteCell cell) : base(context)
         {
             NoteCell = cell;
-            this.context = context;
 
             var view = (context as Activity).LayoutInflater.Inflate(Resource.Layout.AndroidNoteCell, null);
             ContentText = view.FindViewById<TextView>(Resource.Id.ContentText);
