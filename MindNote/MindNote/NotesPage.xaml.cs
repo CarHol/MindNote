@@ -55,13 +55,5 @@ namespace MindNote
             }
         }
 
-        async void OnLayoutTestSelected(object sender, EventArgs e)
-        {
-            var testTopic = await model.GetTopicAsync(0);
-            await Navigation.PushAsync(new NoteWebView(model)
-            {
-                BindingContext = testTopic
-            });
-        }
     }
 }

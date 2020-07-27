@@ -35,7 +35,6 @@ namespace MindNote
             }
         }
 
-        public object NavigationService { get; set; }
 
         public App()
         {

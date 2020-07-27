@@ -31,24 +31,16 @@ namespace MindNote.Droid
             {
                 cell.NoteCell.PropertyChanged += OnNoteCellProprtyChanged;
             }
-
-
-            //cell.ContentText.LongClickable = true;
-            //cell.LongClickable = true;
-
             noteCell.PropertyChanged += OnNoteCellProprtyChanged;
-            cell.LongClickable = true;
-            cell.LongClick += (s, ea) =>
-            {
-                if (noteCell != null)
-                {
-                    noteCell.LongPressedHandler?.Invoke(noteCell, ea);
-                    var command = noteCell.LongpressCommand;// CustomImage.GetCommand(_view);  
-                    command?.Execute(noteCell);
 
-                }
-            };
+            cell.ContentText.LongClickable = true;
+            cell.LongClickable = true;
+
+            cell.LongClick += OnCellLongClicked;
+            cell.ContentText.LongClick += OnCellLongClicked;
+
             cell.UpdateCell(noteCell);
+
             return cell;
         }
 

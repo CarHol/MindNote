@@ -6,8 +6,6 @@
              mc:Ignorable="d"
              x:Class="MindNote.NotesPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Test WebView"
-                     Clicked="OnLayoutTestSelected" />
         <ToolbarItem Text="Add Topic"
                      Clicked="OnTopicAddedTapped" />
     </ContentPage.ToolbarItems>

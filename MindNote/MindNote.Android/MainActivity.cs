@@ -22,7 +22,6 @@ namespace MindNote.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            Console.WriteLine("INCOMING INTENT");
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             base.OnCreate(savedInstanceState);
@@ -30,6 +29,8 @@ namespace MindNote.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+
+            // Handle deep link if present
             Android.Net.Uri data = Intent.Data;
             if (savedInstanceState == null && Intent?.Data != null)
             {
@@ -40,7 +41,6 @@ namespace MindNote.Droid
 
         protected override void OnNewIntent(Intent intent)
         {
-            Console.WriteLine("NEW INTENT WOOOW");
             base.OnNewIntent(intent);
 
             if (intent?.Data != null)
@@ -49,16 +49,9 @@ namespace MindNote.Droid
             }
         }
 
-        private async void OpenDeepLink(Android.Net.Uri data)
+        private void OpenDeepLink(Android.Net.Uri data)
         {
-            Console.WriteLine("NEW DEEP LINK: " + data.PathSegments[0]);
             ((App)App.Current).NavigateToTopic(data.PathSegments[0]);
-           /*
-            ((App)App.Current).NavigationService.NavigateByPushAsync("HomeModule/UrlDisplayPageView", true, () =>
-            {
-                Messenger.Default.Send(new SendUrlMessage() { Url = "http://cms.leoncountyfl.gov/eitest/index.asp?type=mapp", Name = "Critical Updates" });
-            });
-            */
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
