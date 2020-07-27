@@ -23,16 +23,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="CellPage.xaml">
+    <EmbeddedResource Update="Views\Pages\CellPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="NoteEntryPage.xaml">
+    <EmbeddedResource Update="Views\Pages\NoteEntryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="TopicEntryPage.xaml">
+    <EmbeddedResource Update="Views\Pages\TopicEntryPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="NotesPage.xaml">
+    <EmbeddedResource Update="Views\Pages\NotesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SamplePage.xaml">
@@ -43,11 +43,10 @@
   <ItemGroup>
     <Folder Include="Themes\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="TopicEntryPage.xaml.cs">
+    <Compile Update="Views\Pages\TopicEntryPage.xaml.cs">
       <DependentUpon>TopicEntryPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>

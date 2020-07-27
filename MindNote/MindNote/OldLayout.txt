@@ -1,2 +1,0 @@
-﻿<color name="cellback">#00000000</color>
-  <color name="cellchecked">#FF0000FF</color>
