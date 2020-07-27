@@ -31,11 +31,6 @@ namespace MindNote
             var topic = (Topic)BindingContext;
             Title = topic.Title;
             var notes = await model.GetNotesAsync(topic.ID);
-            /*foreach (var note in notes)
-            {
-                Console.WriteLine(note.Text);
-            }
-            */
 
             NoteView.ItemsSource = notes;
             NoteView.HasUnevenRows = true;

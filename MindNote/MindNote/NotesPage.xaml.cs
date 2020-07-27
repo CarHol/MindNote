@@ -22,7 +22,6 @@ namespace MindNote
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            Console.WriteLine("Test");
             listView.ItemsSource = await model.GetTopicsAsync();
         }
 
@@ -38,7 +37,6 @@ namespace MindNote
         {
             if (e.SelectedItem != null)
             {
-
                 var topic = e.SelectedItem as Topic;
                 try
                 {

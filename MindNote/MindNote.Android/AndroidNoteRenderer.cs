@@ -20,7 +20,6 @@ namespace MindNote.Droid
         protected override Android.Views.View GetCellCore(Cell item, Android.Views.View convertView, ViewGroup parent, Context context)
         {
             noteCell = (NoteCell)item;
-            Console.WriteLine("\t\t" + noteCell.Text);
 
             cell = convertView as AndroidNoteCell;
             if (cell == null)
