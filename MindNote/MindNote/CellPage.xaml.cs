@@ -77,7 +77,7 @@ namespace MindNote
 
         async void NoteCell_LongPressed(object sender, EventArgs e)
         {
-            if (sender != null)
+            if (sender != null && ((NoteCell)sender).Text.Length > 0)
             {
                 
                 var noteCell = (sender) as NoteCell;

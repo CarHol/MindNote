@@ -11,6 +11,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using MindNote;
 using MindNote.Droid;
+//using MindNote.Droid.Movement;
+using System.Collections.Generic;
 
 namespace MindNote.Droid
 {
@@ -37,19 +39,10 @@ namespace MindNote.Droid
 
         public void UpdateCell(NoteCell cell)
         {
-            SpannableStringBuilder ssb = new SpannableStringBuilder();
             
-
-            //ContentText.Text = cell.Text;
-            //ssb.Append(cell.Text);
-            //ssb.SetSpan(new ImageSpan(context, Resource.Drawable.xamarin_logo), ssb.Length() - 1, ssb.Length(), 0);
-            //ssb.Append(" POST TEXT");
-            // Do layout stuff
-            //string testString = "<h1>TestHeading</h1><p>This is some text with <a href=\"https://www.google.com\">link</a> included.</p>";
             ContentText.TextFormatted = HtmlCompat.FromHtml(cell.Text, HtmlCompat.FromHtmlModeLegacy);
             ContentText.MovementMethod = LinkMovementMethod.Instance;
-            //ContentText.SetMovementMethod(LinkMovementMethod.getInstance());
-            //ContentText.TextFormatted = ssb;
         }
+
     }
 }

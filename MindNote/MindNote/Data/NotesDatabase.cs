@@ -23,6 +23,20 @@ namespace MindNote.Data
             return _database.Table<Topic>().ToListAsync();
         }
 
+        public Task<List<Topic>> GetTopicsAsync(string title)
+        {
+            return _database.Table<Topic>()
+                .Where(i => i.Title.Contains(title))
+                .ToListAsync();
+        }
+
+        public Task<Topic> GetTopicAsync(string title)
+        {
+            return _database.Table<Topic>()
+                .Where(i => i.Title == title)
+                .FirstOrDefaultAsync();
+        }
+
         public Task<List<Note>> GetNotesAsync()
         {
             return _database.Table<Note>().ToListAsync();

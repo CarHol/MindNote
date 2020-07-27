@@ -15,10 +15,11 @@ namespace MindNote.Droid
     class AndroidNoteRenderer : ViewCellRenderer
     {
         AndroidNoteCell cell;
+        NoteCell noteCell;
 
         protected override Android.Views.View GetCellCore(Cell item, Android.Views.View convertView, ViewGroup parent, Context context)
         {
-            var noteCell = (NoteCell)item;
+            noteCell = (NoteCell)item;
             Console.WriteLine("\t\t" + noteCell.Text);
 
             cell = convertView as AndroidNoteCell;
@@ -30,6 +31,10 @@ namespace MindNote.Droid
             {
                 cell.NoteCell.PropertyChanged += OnNoteCellProprtyChanged;
             }
+
+
+            //cell.ContentText.LongClickable = true;
+            //cell.LongClickable = true;
 
             noteCell.PropertyChanged += OnNoteCellProprtyChanged;
             cell.LongClickable = true;
@@ -45,6 +50,17 @@ namespace MindNote.Droid
             };
             cell.UpdateCell(noteCell);
             return cell;
+        }
+
+        void OnCellLongClicked(object sender, EventArgs ea)
+        {
+            if (noteCell != null)
+            {
+                noteCell.LongPressedHandler?.Invoke(noteCell, ea);
+                var command = noteCell.LongpressCommand;// CustomImage.GetCommand(_view);  
+                command?.Execute(noteCell);
+
+            }
         }
 
         void OnNoteCellProprtyChanged(object sender, PropertyChangedEventArgs e)

@@ -35,6 +35,8 @@ namespace MindNote
             }
         }
 
+        public object NavigationService { get; set; }
+
         public App()
         {
             InitializeComponent();
@@ -56,5 +58,19 @@ namespace MindNote
         {
             // Handle when your app resumes
         }
+
+        public async void NavigateToTopic(string topicName)
+        {
+            Topic topic = model.GetTopicAsync(topicName).Result;
+            if (topic != null && topic.Title.Equals(topicName))
+            {
+                await MainPage.Navigation.PushAsync(new CellPage(model)
+                {
+                    BindingContext = topic
+                });
+            }
+        }
+
+        
     }
 }

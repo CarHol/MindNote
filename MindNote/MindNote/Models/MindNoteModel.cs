@@ -46,9 +46,22 @@ namespace MindNote.Models
             return _db.GetTopicAsync(id);
         }
 
+        public Task<Topic> GetTopicAsync(string title)
+        {
+            return _db.GetTopicAsync(title);
+        }
+
+
         public Task<List<Topic>> GetTopicsAsync()
         {
             return _db.GetTopicsAsync();
+        }
+
+
+        public Task<List<Topic>> GetTopicsAsync(string id)
+        {
+            return _db.GetTopicsAsync(id);
+
         }
 
         public Task SaveNoteAsync(Note note)
