@@ -22,6 +22,10 @@ using static Android.Text.Html;
 
 namespace MindNote.Droid.RenderingTools
 {
+    /// <summary>
+    /// An asynchronous image getter for online image sources. The solution is a C# port of the methods suggested 
+    /// by Michael Spector here: https://stackoverflow.com/a/6343299/13540302
+    /// </summary>
     class AsyncHtmlImageGetter : Java.Lang.Object, IImageGetter
     {
         #region Fields
