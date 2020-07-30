@@ -13,10 +13,12 @@ The goal is to support full MarkDown formatting. Currently supported formatting 
 - Headings
 - Emphasis (*italic* or **bold**)
 - Hyperlinks
+- Images from online sources
 
 Upcoming formatting support:
 
-- Embedded images (local or web)
+- Local images
+- Improved image scaling
 - LaTeX math expressions
 - Code blocks
 
