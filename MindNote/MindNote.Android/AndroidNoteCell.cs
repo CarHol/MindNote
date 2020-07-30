@@ -13,6 +13,7 @@ using MindNote;
 using MindNote.Droid;
 //using MindNote.Droid.Movement;
 using System.Collections.Generic;
+using MindNote.Droid.RenderingTools;
 
 namespace MindNote.Droid
 {
@@ -21,6 +22,7 @@ namespace MindNote.Droid
         // Fields
         public NoteCell NoteCell { get; private set; }
         public Element Element => NoteCell;
+        private Html.IImageGetter imageGetter;
 
         // Elements
         public TextView ContentText { get; set; }
@@ -32,14 +34,15 @@ namespace MindNote.Droid
 
             var view = (context as Activity).LayoutInflater.Inflate(Resource.Layout.AndroidNoteCell, null);
             ContentText = view.FindViewById<TextView>(Resource.Id.ContentText);
-            
             AddView(view);
+
+            imageGetter = new AsyncHtmlImageGetter(ContentText, this.Context);
         }
 
         public void UpdateCell(NoteCell cell)
         {
             
-            ContentText.TextFormatted = HtmlCompat.FromHtml(cell.Text, HtmlCompat.FromHtmlModeLegacy);
+            ContentText.TextFormatted = HtmlCompat.FromHtml(cell.Text, HtmlCompat.FromHtmlModeLegacy, imageGetter, null);
             ContentText.MovementMethod = LinkMovementMethod.Instance;
         }
 

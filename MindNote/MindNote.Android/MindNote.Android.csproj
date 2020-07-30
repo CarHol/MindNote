@@ -66,6 +66,8 @@
     <Compile Include="AndroidNoteCell.cs" />
     <Compile Include="AndroidNoteRenderer.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="RenderingTools\AsyncHtmlImageGetter.cs" />
+    <Compile Include="RenderingTools\URLDrawable.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

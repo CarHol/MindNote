@@ -31,7 +31,7 @@ namespace MindNote.Droid
             LoadApplication(new App());
 
             // Handle deep link if present
-            Android.Net.Uri data = Intent.Data;
+            //Android.Net.Uri data = Intent.Data;
             if (savedInstanceState == null && Intent?.Data != null)
             {
                 OpenDeepLink(Intent.Data);
