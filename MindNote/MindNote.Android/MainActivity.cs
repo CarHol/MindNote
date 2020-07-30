@@ -12,9 +12,6 @@ using Android.Net;
 namespace MindNote.Droid
 {
     [Activity(Label = "MindNote", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTask, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    //[IntentFilter(new[] { Intent },
-    //Categories = new[] { Intent.CategoryDefault },
-    //DataScheme = "MindNote")]
     [IntentFilter(new string[] { "android.intent.action.VIEW", },
                   DataScheme = "mindnote",
                   Categories = new string[] { "android.intent.category.DEFAULT" })]
@@ -31,7 +28,6 @@ namespace MindNote.Droid
             LoadApplication(new App());
 
             // Handle deep link if present
-            //Android.Net.Uri data = Intent.Data;
             if (savedInstanceState == null && Intent?.Data != null)
             {
                 OpenDeepLink(Intent.Data);
@@ -53,6 +49,7 @@ namespace MindNote.Droid
         {
             ((App)App.Current).NavigateToTopic(data.PathSegments[0]);
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
