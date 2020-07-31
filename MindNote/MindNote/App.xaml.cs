@@ -12,24 +12,13 @@ namespace MindNote
     public partial class App : Application
     {
 
-        static NotesDatabase database;
         static IMindNoteModel model;
-
-        public static NotesDatabase Database {
-            get {
-                if (database == null)
-                {
-                    database = new NotesDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Topics2.db3"));
-                }
-                return database;
-            }
-        }
 
         public static IMindNoteModel Model {
             get {
-                if (database == null)
+                if (model == null)
                 {
-                    model = new MindNoteModel(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Topics2.db3"));
+                    model = new MindNoteModel(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MindNote.db3"));
                 }
                 return model;
             }
@@ -58,9 +47,10 @@ namespace MindNote
             // Handle when your app resumes
         }
 
+        // TODO: Handle case when linked topic does not exist
         public async void NavigateToTopic(string topicName)
         {
-            Topic topic = model.GetTopicAsync(topicName).Result;
+            Topic topic = await model.GetTopicAsync(topicName);
             if (topic != null && topic.Title.Equals(topicName))
             {
                 await MainPage.Navigation.PushAsync(new CellPage(model)
@@ -69,7 +59,5 @@ namespace MindNote
                 });
             }
         }
-
-        
     }
 }
