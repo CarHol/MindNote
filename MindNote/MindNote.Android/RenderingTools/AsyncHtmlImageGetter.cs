@@ -29,36 +29,41 @@ namespace MindNote.Droid.RenderingTools
     class AsyncHtmlImageGetter : Java.Lang.Object, IImageGetter
     {
         #region Fields
-        Context context;
-        View view;
+        Context Context { get; set; }
+        View View { get; set; }
         #endregion
 
         #region Constructors
         public AsyncHtmlImageGetter(View view, Context context)
         {
-            this.context    = context;
-            this.view       = view;
+            Context    = context;
+            View       = view;
         }
         #endregion
 
         #region Interface implementations
         public Drawable GetDrawable(string source)
         {
-
+            // Target drawable object to be udpated once the data has been fetched asynchronously
             URLDrawable drawable = new URLDrawable();
 
+            // Fetch the image asynchronously and load into drawable when done
             ImageGetterAsyncTask asyncTask = new ImageGetterAsyncTask(drawable, this);
             asyncTask.Execute(source);
 
+            // Return Drawable object which will be updated once the async task finishes
             return drawable;
         }
         #endregion
 
         #region Tasks
-        public class ImageGetterAsyncTask : AsyncTask
+        /// <summary>
+        /// Helper class to fetch image data in the background
+        /// </summary>
+        protected class ImageGetterAsyncTask : AsyncTask
         {
-            URLDrawable urlDrawable;
-            AsyncHtmlImageGetter getter;
+            private URLDrawable urlDrawable;
+            private AsyncHtmlImageGetter getter;
 
             public ImageGetterAsyncTask(URLDrawable urlDrawable, AsyncHtmlImageGetter getter)
             {
@@ -76,13 +81,13 @@ namespace MindNote.Droid.RenderingTools
                 Drawable drawable = (Drawable)result;
                 urlDrawable.SetBounds(0, 0, 0 + drawable.IntrinsicWidth * 10, 0 + drawable.IntrinsicHeight * 10);
                 urlDrawable.drawable = drawable;
-                getter.view.Invalidate();
+                getter.View.Invalidate();
 
-                getter.view.SetMinimumHeight(getter.view.Height + drawable.IntrinsicHeight);
+                getter.View.SetMinimumHeight(getter.View.Height + drawable.IntrinsicHeight);
 
             }
 
-            private Drawable FetchDrawable(string urlString)
+            protected Drawable FetchDrawable(string urlString)
             {
                 try
                 {
@@ -98,7 +103,7 @@ namespace MindNote.Droid.RenderingTools
                 }
             }
 
-            private Stream Fetch(string urlString)
+            protected Stream Fetch(string urlString)
             {
                 URL url = new URL(urlString);
                 HttpURLConnection urlConnection = (HttpURLConnection)url.OpenConnection();
@@ -108,7 +113,6 @@ namespace MindNote.Droid.RenderingTools
             }
         }
         #endregion
-
 
     }
 }
