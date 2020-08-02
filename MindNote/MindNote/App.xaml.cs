@@ -18,7 +18,8 @@ namespace MindNote
             get {
                 if (model == null)
                 {
-                    model = new MindNoteModel(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MindNote.db3"));
+                    var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "MindNote.db3");
+                    model = new MindNoteModel(dbPath);
                 }
                 return model;
             }
