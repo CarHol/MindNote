@@ -47,7 +47,7 @@ namespace MindNote
             var textlist = new ObservableCollection<Note>(notes);
             //topic.Notes = textlist;
 
-            await App.Database.DeleteTopicAsync(topic);
+            await App.Model.DeleteTopicAsync(topic);
             await Navigation.PopAsync();
         }
     }

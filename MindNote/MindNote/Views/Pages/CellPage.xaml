@@ -16,7 +16,7 @@
             <ListView x:Name="NoteView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                      <local:NoteCell Text="{Binding HtmlText}" LongPressed="NoteCell_LongPressed"/>
+                      <local:NoteCell Text="{Binding Text}" LongPressed="NoteCell_LongPressed"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

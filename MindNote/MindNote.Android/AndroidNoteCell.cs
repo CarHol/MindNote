@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using MindNote;
 using MindNote.Droid;
+using MindNote.Droid.Utils;
 //using MindNote.Droid.Movement;
 using System.Collections.Generic;
 using MindNote.Droid.RenderingTools;
@@ -41,8 +42,8 @@ namespace MindNote.Droid
 
         public void UpdateCell(NoteCell cell)
         {
-            
-            ContentText.TextFormatted = HtmlCompat.FromHtml(cell.Text, HtmlCompat.FromHtmlModeLegacy, imageGetter, null);
+            ContentText.TextFormatted = cell.Text.MarkdownToHtml();
+            //ContentText.TextFormatted = HtmlCompat.FromHtml(cell.Text, HtmlCompat.FromHtmlModeLegacy, imageGetter, null);
             ContentText.MovementMethod = LinkMovementMethod.Instance;
         }
 

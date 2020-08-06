@@ -70,6 +70,9 @@
     <Compile Include="RenderingTools\URLDrawable.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\HtmlTagHandler.cs" />
+    <Compile Include="Utils\Markdown.cs" />
+    <Compile Include="Utils\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
